@@ -1,6 +1,9 @@
 FROM finalduty/archlinux
 MAINTAINER Ulisses Bini de Paiva Alves <ulissesbpalves@gmail.com>
 
+# mirrorlist
+RUN curl -fsSL "https://www.archlinux.org/mirrorlist/?country=BR&protocol=http&ip_version=4" | cut -b 2- > /etc/pacman.d/mirrorlist
+
 # packages
 RUN pacman -Syu --noconfirm \
   git \
@@ -33,7 +36,7 @@ RUN nvim +PlugInstall +qa
 
 # zsh
 RUN sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-COPY .zshrc /root/.zshrc
+COPY files/.zshrc /root/.zshrc
 
 # workspace
 RUN mkdir /workspace
