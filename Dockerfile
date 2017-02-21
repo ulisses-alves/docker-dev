@@ -7,6 +7,7 @@ RUN curl -fsSL "https://www.archlinux.org/mirrorlist/?country=BR&protocol=http&i
     | cut -b 2- > /etc/pacman.d/mirrorlist \
   && pacman -Syu --noconfirm \
     git \
+    tig \
     zsh \
     tmux \
     neovim \
@@ -15,6 +16,7 @@ RUN curl -fsSL "https://www.archlinux.org/mirrorlist/?country=BR&protocol=http&i
   && git config --global user.email "ulissesbpalves@gmail.com" \
   && mkdir ~/.config \
   && git clone https://github.com/ulisses-alves/dotfiles ~/.dotfiles --depth 1 \
+  && ln -s ~/.dotfiles/tig ~/.config/tig \
   && ln -s ~/.dotfiles/less/.lesskey ~/.lesskey && lesskey \
   && ln -s ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf \
   && ln -s ~/.dotfiles/nvim ~/.config/nvim \
